@@ -45,19 +45,17 @@ RUN apt-get install curl -y \
 #&& sudo bash nodesource_setup.sh \
 
 #Install using Node Package Manager
-#RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash \
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash \
-&& export NVM_DIR="/root/.nvm" \
-&& [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" \
-&& nvm install v18.18.0 \
-&& node -v
+#RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash \
+#    && export NVM_DIR="/root/.nvm" \
+#    && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" \
+#    && nvm install 18.18.0 \
+#    && nvm use 18.18.0
 
-## STEP-7: install Yarn ##
-RUN apt-get update \
-&& npm install -g yarn
+## Installing yarn
+#RUN apt-get install -y yarn
 
 ## STEP-8: install wkhtmltopdf ## 
-RUN apt-get install -y xvfb libfontconfig wkhtmltopdf
+#RUN apt-get install -y xvfb libfontconfig wkhtmltopdf
 
 ## STEP-9: ADD Sudoers ##
 RUN adduser --disabled-password --gecos "" $systemUser \
@@ -69,17 +67,17 @@ USER $systemUser
 WORKDIR /home/$systemUser
 
 ## STEP-11: install frappe-bench ##
-RUN sudo apt-get update && sudo apt-get upgrade -y \
-&& git clone --branch $benchBranch --depth 1 --origin upstream $benchRepo $benchPath \ 
-&& sudo -H pip3 install frappe-bench \
-&& bench --version \
-&& sudo chown frappe -R /home/frappe \
-&& sudo apt-get install cron -y \ 
-&& bench init /home/frappe/frappe-bench --frappe-path https://github.com/frappe/frappe --frappe-branch version-14 --python python3
+#RUN sudo apt-get update && sudo apt-get upgrade -y \
+#&& git clone --branch $benchBranch --depth 1 --origin upstream $benchRepo $benchPath \ 
+#&& sudo -H pip3 install frappe-bench \
+#&& bench --version \
+#&& sudo chown frappe -R /home/frappe \
+#&& sudo apt-get install cron -y \ 
+#&& bench init /home/frappe/frappe-bench --frappe-path https://github.com/frappe/frappe --frappe-branch version-14 --python python3
 
 ## STEP-12: Install ERP app ##
-RUN cd /home/frappe/frappe-bench && pip3 install numpy==1.18.5 && pip3 install pandas==0.24.2 \
-&& bench get-app erpnext https://github.com/frappe/erpnext --branch version-14 
+#RUN cd /home/frappe/frappe-bench && pip3 install numpy==1.18.5 && pip3 install pandas==0.24.2 \
+#&& bench get-app erpnext https://github.com/frappe/erpnext --branch version-14
 
 ## STEP-13: Install mariadb client ##
 RUN sudo apt-get install -y mariadb-client
