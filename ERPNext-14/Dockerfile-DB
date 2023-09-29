@@ -1,0 +1,8 @@
+FROM mariadb/server:10.6
+LABEL Author:Vignesh Rameshkumar
+COPY mariadb.cnf /etc/mysql/conf.d/mariadb.cnf
+#COPY mariadb.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
+EXPOSE 3306
+COPY db-entrypoint.sh /docker-entrypoint-initdb.d/db-entrypoint.sh
+RUN chmod +x /docker-entrypoint-initdb.d/db-entrypoint.sh
+
