@@ -9,9 +9,11 @@ Follow the commands step by step..
 
 <pre>
 ``` git clone https://github.com/Vickypandiyan007/Webapp.git ```
-
+</pre>
+<pre>
 ``` cd Webapp/ ```
-
+</pre>
+<pre>
 ``` ./Erp14-OneClickInstall.sh ```
 </pre>
 
