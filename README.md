@@ -7,15 +7,9 @@ This script will install All dependencies and create One-site with the Given Nam
 Created site only have Frappe & ERPNext Apps only.
 Follow the commands step by step..
 
-<pre>
+
 ``` git clone https://github.com/Vickypandiyan007/Webapp.git ```
-</pre>
-<pre>
+
 ``` cd Webapp/ ```
-</pre>
-<pre>
+
 ``` ./Erp14-OneClickInstall.sh ```
-</pre>
-
-
-
