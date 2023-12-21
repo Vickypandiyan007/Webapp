@@ -2,6 +2,7 @@
 
 set -e
 echo
+
 # Ask for permission
 read -p "Do you want to install the ERPNext 14 and It's dependencies? (y/n): " answer
 
@@ -26,12 +27,12 @@ if [[ "$answer" =~ ^[Yy]$ ]]; then
         python3-pip \
         python3-distutils \
         python3.10-venv \
-        software-properties-common \
+        software-properties-common
 	echo
         echo "Installing Mariadb & Redis server.."
         sudo apt-get install -y mariadb-client \
         mariadb-server \
-        redis-server \
+        redis-server
 	echo
         echo "Installing other dependencies.."
         sudo apt-get install -y xvfb \
@@ -71,6 +72,7 @@ if [[ "$answer" =~ ^[Yy]$ ]]; then
 
         # Use Node.js 16.15.0
         nvm use 16.15.0
+	sleep 5
 
         # Install npm (Node.js package manager)
         sudo apt-get install npm -y
