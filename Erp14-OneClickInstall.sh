@@ -1,5 +1,11 @@
 #!/bin/bash
 
+#############################
+# Author: Vignesh Rameshkumar
+# Version: v1.2
+# This script will set the Self hosted Frappe Bench
+#############################
+
 set -exo pipefail
 echo
 
@@ -13,13 +19,14 @@ if [[ "$answer" =~ ^[Yy]$ ]]; then
         read -s -p "Set the Site Password : " ADMINPASS
 
 	echo
-# Installing Depentencies
+
+# Installing Dependencies
         echo "Updating & upgrading system.."
 
         sudo apt-get update && sudo apt-get upgrade -y
 	echo
-        echo "Installing git & Python.."
-
+        
+	echo "Installing git & Python.."
         sudo apt-get install -y git \
         python3-dev \
         python3.10-dev \
@@ -29,23 +36,28 @@ if [[ "$answer" =~ ^[Yy]$ ]]; then
         python3.10-venv \
         software-properties-common
 	echo
-        echo "Installing Mariadb & Redis server.."
+        
+	echo "Installing Mariadb & Redis server.."
         sudo apt-get install -y mariadb-client \
         mariadb-server \
         redis-server
 	echo
-        echo "Installing other dependencies.."
+        
+	echo "Installing other dependencies.."
         sudo apt-get install -y xvfb \
         libfontconfig \
         wkhtmltopdf \
         libmysqlclient-dev \
         curl
 	echo
-        echo "Installing secure Mysql.."
+        
+	echo "Installing secure Mysql.."
         sudo mysql_secure_installation
 	echo
-        echo "Changing the configuration of mysql.."
+        
+	echo "Changing the configuration of mysql.."
         sleep 2
+
 # Changing mysql configuration
         echo "[mysqld]
         character-set-client-handshake = FALSE
@@ -79,9 +91,9 @@ if [[ "$answer" =~ ^[Yy]$ ]]; then
 
         # Install yarn
         sudo npm install -g yarn
-	
 	echo
-        echo "Install & Initializing Frappe-bench.."
+        
+	echo "Install & Initializing Frappe-bench.."
 
         sudo pip3 install frappe-bench
         bench init --frappe-branch version-14 frappe-bench
@@ -94,6 +106,8 @@ if [[ "$answer" =~ ^[Yy]$ ]]; then
         bench use $SITENAME
         bench install-app erpnext
         sleep 3
+	node -v
+	echo
         echo "Enter 'bench start' command to start the Bench"
 
 else
