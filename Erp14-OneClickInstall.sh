@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -ex
+set -exo pipefail
 echo
 
 # Ask for permission
@@ -13,7 +13,7 @@ if [[ "$answer" =~ ^[Yy]$ ]]; then
         read -s -p "Set the Site Password : " ADMINPASS
 
 	echo
-
+# Installing Depentencies
         echo "Updating & upgrading system.."
 
         sudo apt-get update && sudo apt-get upgrade -y
@@ -46,7 +46,7 @@ if [[ "$answer" =~ ^[Yy]$ ]]; then
 	echo
         echo "Changing the configuration of mysql.."
         sleep 2
-
+# Changing mysql configuration
         echo "[mysqld]
         character-set-client-handshake = FALSE
         character-set-server = utf8mb4
