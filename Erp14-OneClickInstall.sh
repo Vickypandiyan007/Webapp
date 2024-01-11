@@ -101,6 +101,8 @@ if [[ "$answer" =~ ^[Yy]$ ]]; then
         bench new-site $SITENAME --admin-password $ADMINPASS
         sleep 3
         bench get-app --branch version-14 erpnext
+	bench set-config -g developer_mode 1
+	bench clear-cache
 	bench get-app --branch version-14 hrms
         sleep 3
         bench use $SITENAME
