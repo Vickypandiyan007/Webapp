@@ -1,4 +1,4 @@
-# OCI Script for ERPNext V.14
+# OCI Script for ERPNext v14
 
 ## Hi, folks.. Use this One-Click-Install Script to install Frappe's ERPNext V.14 Application.
 
