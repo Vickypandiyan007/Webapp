@@ -8,8 +8,14 @@ Created site only have Frappe & ERPNext Apps only.
 Follow the commands step by step..
 
 
-``` git clone https://github.com/Vickypandiyan007/Webapp.git ```
+``` 
+git clone https://github.com/Vickypandiyan007/Webapp.git
+```
 
-``` cd Webapp/ ```
+``` 
+cd Webapp/
+```
 
-``` ./Erp14-OneClickInstall.sh ```
+``` 
+./Erp14-OneClickInstall.sh
+```
