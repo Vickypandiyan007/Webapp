@@ -13,5 +13,5 @@ git clone https://github.com/Vickypandiyan007/Webapp.git
 ```
 
 ``` 
-./Webapp/Erp14-OneClickInstall.sh
+bash Webapp/Erp14-OneClickInstall.sh
 ```
